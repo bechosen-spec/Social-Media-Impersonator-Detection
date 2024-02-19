@@ -61,7 +61,7 @@ import joblib
 from sklearn.preprocessing import StandardScaler
 
 # Initialize Firebase
-cred = credentials.Certificate("path/to/your/firebase-key.json")
+cred = credentials.Certificate("C:\Users\Boniface\Social-Media-Impersonator-Detection\socialmediaproject-493c8-firebase-adminsdk-zgwf6-3086fc067d.json")
 firebase_admin.initialize_app(cred)
 
 # Firebase Authentication Functions
@@ -74,7 +74,7 @@ def sign_in(email, password):
     pass
 
 # Load your trained model
-model = joblib.load('random_forest_model.joblib')
+model = joblib.load('C:\Users\Boniface\Social-Media-Impersonator-Detection\random_forest_model.joblib')
 
 # Function to scale inputs
 def scale_inputs(input_df):
