@@ -3,7 +3,7 @@ import firebase_admin
 from firebase_admin import credentials, auth
 
 # Initialize Firebase
-cred = credentials.Certificate("path/to/your/firebase-key.json")
+cred = credentials.Certificate("C:\Users\Boniface\Social-Media-Impersonator-Detection\socialmediaproject-493c8-firebase-adminsdk-zgwf6-3086fc067d.json")
 firebase_admin.initialize_app(cred)
 
 def sign_up(email, password):
