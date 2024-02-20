@@ -6,7 +6,7 @@ import firebase_admin
 from firebase_admin import credentials, auth
 
 # Initialize Firebase
-cred_path = "C:/Users/Boniface/Social-Media-Impersonator-Detection/socialmediaproject-493c8-firebase-adminsdk-zgwf6-3086fc067d.json"
+cred_path = "socialmediaproject-493c8-firebase-adminsdk-zgwf6-3086fc067d.json"
 if not firebase_admin._apps:
     cred = credentials.Certificate(cred_path)
     firebase_admin.initialize_app(cred)
@@ -51,7 +51,7 @@ def show_prediction_interface():
                                          'nums/length_fullname', 'name==username', 'description_length',
                                          'external URL', 'private', '#posts', '#followers', '#follows'])
         # Load your trained model
-        model = joblib.load('C:/Users/Boniface/Social-Media-Impersonator-Detection/random_forest_model.joblib')
+        model = joblib.load('random_forest_model.joblib')
 
         # Scale inputs
         scaler = StandardScaler()
