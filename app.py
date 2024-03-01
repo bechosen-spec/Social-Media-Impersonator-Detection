@@ -29,7 +29,7 @@ def sign_in(email, password):
 
 def show_prediction_interface():
         # Personalized welcome message
-    st.subheader(f"Welcome, {email}!")
+    st.subheader(f"Welcome!")
     st.write("Let's check if an account is genuine or an impersonator.")
 
     with st.form(key='impersonator_form'):
