@@ -47,8 +47,11 @@ def show_prediction_interface():
         submit_button = st.form_submit_button(label='Predict')
 
     if submit_button and account_name and username:  # Ensure account name and username are provided
-        input_df = pd.DataFrame([[profile_pic, name_eq_username, description_length, external_url, private, posts, followers, follows]],
-                        columns=['profile_pic', 'name_eq_username', 'description_length', 'external_url', 'private', 'posts', 'followers', 'follows'])
+        input_df = pd.DataFrame([
+    [profile_pic, name_eq_username, description_length, external_url, private, posts, followers, follows]
+], columns=[
+    'profile_pic', 'name_eq_username', 'description_length', 'external_url', 'private', 'posts', 'followers', 'follows'
+])
 
         # Load the pre-fitted scaler and model
         scaler = joblib.load('social_media_scaler.pkl')  # Update the path to your scaler
