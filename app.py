@@ -53,7 +53,7 @@ def show_prediction_interface():
                                          'external URL', 'private', '#posts', '#followers', '#follows'])
         
         # Load the pre-fitted scaler and model
-        scaler = joblib.load('social_media_scaler.pkl')  # Update the path to your scaler
+        scaler = StandardScaler()  # Update the path to your scaler
         model = joblib.load('social_media_model.pkl')
 
         # Transform the input and make a prediction
