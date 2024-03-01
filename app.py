@@ -52,12 +52,14 @@ def show_prediction_interface():
                                 columns=['profile_pic', 'name==username', 'description_length',
                                          'external URL', 'private', '#posts', '#followers', '#follows'])
         
-        # Load the pre-fitted scaler and model
-        scaler = StandardScaler()  # Update the path to your scaler
+        # Load your trained model
         model = joblib.load('social_media_model.pkl')
 
-        # Transform the input and make a prediction
-        input_df_scaled = scaler.transform(input_df)
+        # Scale inputs
+        scaler = StandardScaler()
+        input_df_scaled = scaler.fit_transform(input_df)
+
+        # Make prediction
         prediction = model.predict(input_df_scaled)
 
         # Fun and engaging result message
