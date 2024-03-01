@@ -57,7 +57,7 @@ def show_prediction_interface():
         model = joblib.load('social_media_model.pkl')
 
         # Transform the input and make a prediction
-        input_df_scaled = scaler.transform(input_df)
+        input_df_scaled = scaler.fit.transform(input_df)
         prediction = model.predict(input_df_scaled)
 
         # Fun and engaging result message
