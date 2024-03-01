@@ -64,12 +64,12 @@ def show_prediction_interface():
 
         # Fun and engaging result message
         result_message = f"The account '{account_name}' with the username '{username}' is "
-        result_message += "likely Genuine. 🎉" if prediction == 0 else "likely an Impersonator. 🚨"
+        result_message += "likely an Impersonator. 🚨" if prediction == 1 else "likely Genuine. 🎉"
 
-        if prediction == 0:
-            st.success(result_message)
-        else:
+        if prediction == 1:
             st.error(result_message)
+        else:
+            st.success(result_message)
 
 # Main Streamlit UI
 st.title('Social Media Impersonator Detection')
