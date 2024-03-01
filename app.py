@@ -28,12 +28,15 @@ def sign_in(email, password):
         st.error("User does not exist or wrong password.")
 
 def show_prediction_interface():
-    st.subheader("Prediction Interface")
+        # Personalized welcome message
+    st.subheader(f"Welcome, {email}!")
+    st.write("Let's check if an account is genuine or an impersonator.")
+
     with st.form(key='impersonator_form'):
+        account_name = st.text_input('Account Name')
+        username = st.text_input('Username')
+
         profile_pic = st.selectbox('Profile Picture (1 = Yes, 0 = No)', options=[1, 0])
-        nums_length_username = st.number_input('Ratio of Numbers in Username', value=0.0, step=0.01)
-        fullname_words = st.number_input('Number of Words in Fullname', value=1, step=1)
-        nums_length_fullname = st.number_input('Ratio of Numbers in Fullname', value=0.0, step=0.01)
         name_eq_username = st.selectbox('Name Equals Username (1 = Yes, 0 = No)', options=[1, 0])
         description_length = st.number_input('Description Length', value=100)
         external_url = st.selectbox('External URL (1 = Yes, 0 = No)', options=[1, 0])
@@ -43,15 +46,14 @@ def show_prediction_interface():
         follows = st.number_input('Number Following', value=300)
         submit_button = st.form_submit_button(label='Predict')
 
-    if submit_button:
-        input_df = pd.DataFrame([[profile_pic, nums_length_username, fullname_words, nums_length_fullname,
-                                  name_eq_username, description_length, external_url, private, posts,
+    if submit_button and account_name and username:  # Ensure account name and username are provided
+        input_df = pd.DataFrame([[profile_pic, name_eq_username, description_length, external_url, private, posts,
                                   followers, follows]],
-                                columns=['profile_pic', 'nums/length_username', 'fullname_words',
-                                         'nums/length_fullname', 'name==username', 'description_length',
+                                columns=['profile_pic', 'name==username', 'description_length',
                                          'external URL', 'private', '#posts', '#followers', '#follows'])
+        
         # Load your trained model
-        model = joblib.load('random_forest_model.joblib')
+        model = joblib.load('Social-Media-Impersonator-Detection\social_media_model.joblib')
 
         # Scale inputs
         scaler = StandardScaler()
@@ -60,10 +62,14 @@ def show_prediction_interface():
         # Make prediction
         prediction = model.predict(input_df_scaled)
 
+        # Fun and engaging result message
+        result_message = f"The account '{account_name}' with the username '{username}' is "
+        result_message += "likely Genuine. 🎉" if prediction == 0 else "likely an Impersonator. 🚨"
+
         if prediction == 0:
-            st.success('The account is likely Genuine.')
+            st.success(result_message)
         else:
-            st.error('The account is likely an Impersonator.')
+            st.error(result_message)
 
 # Main Streamlit UI
 st.title('Social Media Impersonator Detection')
