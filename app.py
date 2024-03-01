@@ -53,7 +53,7 @@ def show_prediction_interface():
                                          'external URL', 'private', '#posts', '#followers', '#follows'])
         
         # Load your trained model
-        model = joblib.load('Social-Media-Impersonator-Detection\social_media_model.joblib')
+        model = joblib.load('social_media_model.joblib')
 
         # Scale inputs
         scaler = StandardScaler()
