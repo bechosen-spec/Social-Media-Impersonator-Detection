@@ -63,7 +63,7 @@ def show_prediction_interface():
 
         # Fun and engaging result message
         result_message = f"The account '{account_name}' with the username '{username}' is "
-        result_message += "likely an Impersonator. 🚨" if prediction == 1 else "likely Genuine. 🎉"
+        result_message += "an Impersonator. 🚨" if prediction == 1 else "Genuine. 🎉"
 
         if prediction == 1:
             st.error(result_message)
